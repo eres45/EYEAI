@@ -33,6 +33,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT not set
+    app.run(host="0.0.0.0", port=port, debug=False)
+
 # Import and register the eye scan blueprint
 from eye_scan_routes import eye_scan
 app.register_blueprint(eye_scan)
