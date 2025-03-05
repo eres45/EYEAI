@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PDF Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Generation Test</h1>
+        
+        <h2>1. Test Simple PDF</h2>
+        <button id="testSimplePdf">Generate Simple PDF</button>
+        
+        <h2>2. Test Improved PDF</h2>
+        <p>Test data for generating an improved PDF report:</p>
+        <textarea id="pdfData">{
+    "condition": "Viral Conjunctivitis",
+    "confidence": "92%",
+    "detection_status": "Eye Condition Detected",
+    "analysis_result": "The analysis shows signs of viral conjunctivitis (pink eye). The eye exhibits redness and inflammation consistent with this condition. Recommended to consult with an eye care professional for proper treatment.",
+    "report_type": "Eye Condition Report",
+    "analysis_date": "2025-02-28"
+}</textarea>
+        <button id="testImprovedPdf">Generate Improved PDF</button>
+        
+        <div id="status" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Function to show status message
+        function showStatus(message, isError = false) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            
+            if (isError) {
+                statusDiv.className = 'error';
+            } else {
+                statusDiv.className = 'success';
+            }
+        }
+
+        // Test simple PDF
+        document.getElementById('testSimplePdf').addEventListener('click', function() {
+            showStatus('Generating simple PDF...');
+            
+            fetch('/simple-pdf-report', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    condition: 'Normal Eye',
+                    confidence: '98%',
+                    detection_status: 'Healthy Eye',
+                    analysis_result: 'No signs of eye flu or other eye conditions detected. The eye appears healthy.',
+                    report_type: 'Eye Health Report',
+                    analysis_date: new Date().toLocaleString()
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to generate PDF: ${response.status} ${response.statusText}`);
+                }
+                showStatus('PDF generated successfully! Downloading...');
+                return response.blob();
+            })
+            .then(blob => {
+                // Create a download link
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'simple_eye_report.pdf';
+                document.body.appendChild(a);
+                a.click();
+                
+                // Clean up
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                }, 100);
+            })
+            .catch(error => {
+                showStatus(`Error: ${error.message}`, true);
+                console.error('Error generating PDF:', error);
+            });
+        });
+
+        // Test improved PDF
+        document.getElementById('testImprovedPdf').addEventListener('click', function() {
+            showStatus('Generating improved PDF...');
+            
+            try {
+                const jsonData = JSON.parse(document.getElementById('pdfData').value);
+                
+                fetch('/improved-pdf-report', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to generate PDF: ${response.status} ${response.statusText}`);
+                    }
+                    showStatus('Improved PDF generated successfully! Downloading...');
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Create a download link
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'improved_eye_report.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // Clean up
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                    }, 100);
+                })
+                .catch(error => {
+                    showStatus(`Error: ${error.message}`, true);
+                    console.error('Error generating PDF:', error);
+                });
+            } catch (error) {
+                showStatus(`Error parsing JSON: ${error.message}`, true);
+            }
+        });
+    </script>
+</body>
+</html>

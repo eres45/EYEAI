@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Scan Analysis - EyeAI</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='eye-scan.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <nav class="floating-nav">
+        <div class="nav-left">
+            <a href="/" class="logo">EyeAI</a>
+        </div>
+        
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/research">Research</a></li>
+                <li><a href="/eye-scan" class="active">Eye Scan</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-right">
+            <button class="icon-btn search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="icon-btn sound-btn">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="menu-btn">
+                <span>Menu</span>
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="eye-scan-container">
+        <header class="eye-scan-header">
+            <div class="pattern-overlay"></div>
+            <h1>Advanced Eye Analysis</h1>
+            <p>Upload or capture an image of your eye for detailed analysis using our AI-powered system. Get insights into common eye conditions and receive personalized recommendations.</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="container">
+                <div class="upload-card">
+                    <h2 class="section-title">Start Your Eye Analysis</h2>
+                    <p class="section-subtitle">Get instant AI-powered insights about your eye health</p>
+                    
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-dropzone" id="upload-dropzone">
+                            <i class="fas fa-eye upload-icon"></i>
+                            <h3>Drag & Drop Your Eye Image Here</h3>
+                            <p>or</p>
+                            <button class="upload-button" id="upload-btn">
+                                <i class="fas fa-file-image"></i>
+                                Select Image
+                            </button>
+                            <input type="file" id="file-input" class="file-input" accept="image/*">
+                            <p class="upload-note">Supported formats: JPG, PNG - Max size: 10MB</p>
+                        </div>
+                    </div>
+
+                    <div id="preview-container" class="preview-container" style="display: none;">
+                        <div class="preview-header">
+                            <h3>Image Preview</h3>
+                            <p>Review your eye image before analysis</p>
+                        </div>
+                        <div class="image-preview">
+                            <img id="preview-img" src="" alt="Eye preview">
+                        </div>
+                        <div class="preview-actions">
+                            <button id="analyze-btn" class="action-button primary">
+                                <i class="fas fa-search"></i> Analyze Image
+                            </button>
+                            <button id="reset-btn" class="action-button secondary">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="results-container" class="results-section" style="display: none;">
+                        <div class="container">
+                            <div class="results-header">
+                                <h2><i class="fas fa-chart-line"></i> Analysis Results</h2>
+                                <p>Based on our advanced eye analysis technology, we've prepared a comprehensive report for your eye condition.</p>
+                            </div>
+                            
+                            <div class="results-data">
+                                <div class="results-card">
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Eye Condition</h3>
+                                            <p id="condition-name">Loading analysis...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-thermometer-half"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Severity Level</h3>
+                                            <p id="severity-level">Analyzing...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-percent"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Confidence Score</h3>
+                                            <p id="confidence-score">Calculating...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="results-card">
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-file-medical-alt"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Detailed Diagnosis</h3>
+                                            <p id="diagnosis-details">Processing your eye scan...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Symptoms Detected</h3>
+                                            <p id="symptoms-detected">Analyzing symptoms...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-item">
+                                        <div class="result-icon">
+                                            <i class="fas fa-calendar-check"></i>
+                                        </div>
+                                        <div class="result-content">
+                                            <h3>Analysis Date</h3>
+                                            <p id="analysis-date">Pending...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="comparison-section">
+                                <h3>Visual Comparison</h3>
+                                <div class="comparison-container">
+                                    <div class="comparison-item">
+                                        <h4>Original Image</h4>
+                                        <img id="comparison-original" src="#" alt="Original eye image">
+                                    </div>
+                                    <div class="comparison-item">
+                                        <h4>Analyzed Image</h4>
+                                        <img id="comparison-analyzed" src="#" alt="Analyzed eye image">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="recommendation-card">
+                                <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                                <ul id="recommendations-list">
+                                    <li>Loading recommendations...</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="preview-actions">
+                                <button id="download-report" class="action-button primary">
+                                    <i class="fas fa-download"></i> Download Report
+                                </button>
+                                <button id="new-scan" class="action-button secondary">
+                                    <i class="fas fa-redo"></i> New Scan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="{{ url_for('static', filename='eye-scan.js') }}"></script>
+</body>
+</html>

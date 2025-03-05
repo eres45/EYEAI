@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeAI - Advanced Eye Disease Analysis</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatbot-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button-fix.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <main class="snap-scroll-container">
+        <section class="hero-premium snap-section" id="hero">
+            <nav class="floating-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo">EyeAI</a>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-links">
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/research">Research</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="icon-btn search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="icon-btn sound-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="menu-btn">
+                        <span>Menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="hero-content">
+                <div class="hero-text-container">
+                    <p class="purpose-label">PURPOSE OF EYEAI</p>
+                    
+                    <h1 class="hero-title">
+                        Detailed diagnostic<br>
+                        of your eyes
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Eye health is the window to overall health. Don't put 
+                        it off for later. Think about your future today.
+                    </p>
+                    
+                    <a href="/eye-scan" class="minimal-cta">
+                        <span>ANALYSE NOW</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="model-container">
+                    <iframe src="https://my.spline.design/dnaparticles-0f5014090e8a1782c735c2ffc85281d9/" 
+                            frameborder="0" 
+                            id="spline-animation">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll for more</span>
+                <span class="scroll-icon">↓</span>
+            </div>
+        </section>
+
+        <section class="info-block snap-section" id="info">
+            <div class="info-content-wrapper">
+                <div class="info-left">
+                    <div class="mission-statement">
+                        <h2>Revolutionizing Eye Flu Diagnostics 
+                            <span class="highlight-text">with Advanced AI Technology</span>, 
+                            <span class="text-fade">delivering precise medical insights in minutes.</span>
+                        </h2>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item fade-up" data-value="99">
+                            <div class="stat-number">99%</div>
+                            <div class="stat-label">Diagnostic<br>Accuracy</div>
+                        </div>
+                        <div class="stat-item fade-up" data-value="10">
+                            <div class="stat-number">10s</div>
+                            <div class="stat-label">Average Analysis<br>Time</div>
+                        </div>
+                        <div class="stat-item fade-up" data-value="24">
+                            <div class="stat-number">0/7</div>
+                            <div class="stat-label">AI-Powered<br>Availability</div>
+                        </div>
+                        <div class="stat-item fade-up" data-value="100">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Successfully Analyzed<br>Cases</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-right">
+                    <div class="process-spiral fade-up">
+                        <svg class="spiral-svg" viewBox="0 0 800 800">
+                            <circle class="spiral-path animate-draw" cx="400" cy="400" r="300" fill="none" />
+                            <circle class="spiral-path-hover animate-draw" cx="400" cy="400" r="300" fill="none" />
+                            <circle class="spiral-path inner-circle animate-draw" cx="400" cy="400" r="250" fill="none" />
+                            <circle class="spiral-path inner-circle animate-draw" cx="400" cy="400" r="200" fill="none" />
+                        </svg>
+                        <div class="spiral-points">
+                            <div class="spiral-point animate-in" style="--i:1; --angle:0deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">1. Upload Eye<br>Image</div>
+                            </div>
+                            <div class="spiral-point animate-in" style="--i:2; --angle:60deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">2. AI Image<br>Processing</div>
+                            </div>
+                            <div class="spiral-point animate-in" style="--i:3; --angle:120deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">3. Symptom<br>Analysis</div>
+                            </div>
+                            <div class="spiral-point animate-in" style="--i:4; --angle:180deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">4. Severity<br>Assessment</div>
+                            </div>
+                            <div class="spiral-point animate-in" style="--i:5; --angle:240deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">5. Treatment<br>Recommendations</div>
+                            </div>
+                            <div class="spiral-point animate-in" style="--i:6; --angle:300deg">
+                                <div class="point-dot"></div>
+                                <div class="point-text">6. Follow-up<br>Care Plan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="science-behind snap-section" id="science">
+            <div class="section-header reveal-text">
+                <h2>The Science Behind<br>Our Services</h2>
+            </div>
+            <div class="science-content">
+                <div class="science-text reveal-text">
+                    <p class="science-highlight">
+                        Pioneering <span class="text-light">eye diagnostics innovation</span>, we
+                        leverage cutting-edge technologies, from
+                        <span class="text-light">retinal imaging to AI-driven analysis</span> for early detection of eye conditions.
+                    </p>
+                </div>
+                <div class="science-steps">
+                    <div class="step-indicator">
+                        <div class="indicator-point active" 
+                            data-stage="Image Capture" 
+                            data-info="Our system captures high-quality eye images through a user-friendly interface. Users can easily upload photos of affected eyes for quick analysis."></div>
+                        <div class="indicator-point" 
+                            data-stage="AI Analysis" 
+                            data-info="Advanced machine learning models analyze eye redness, swelling, and discharge patterns. Trained on extensive datasets of eye infection cases."></div>
+                        <div class="indicator-point" 
+                            data-stage="Symptom Detection" 
+                            data-info="Precise detection of common eye flu symptoms including conjunctivitis, redness, irritation, and discharge. Helps differentiate between viral and bacterial infections."></div>
+                        <div class="indicator-point" 
+                            data-stage="Risk Assessment" 
+                            data-info="Evaluates infection severity and potential complications. Provides early warning for serious conditions requiring immediate medical attention."></div>
+                        <div class="indicator-point" 
+                            data-stage="Care Guidance" 
+                            data-info="Delivers personalized treatment recommendations and preventive measures. Includes proper eye care instructions and infection control guidelines."></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="analysis-process snap-section" id="advantages">
+            <div class="section-header reveal-text">
+                <span class="tagline">Your Health, Our Expertise</span>
+                <h2>Our Advantages</h2>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-tag">Advantages</div>
+                    <h3>Image Capture<br>Technology</h3>
+                    <div class="number">01</div>
+                    <div class="explore-button">
+                        <span>explore</span>
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="arrow-icon"></div>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-tag">Advantages</div>
+                    <h3>AI-Powered<br>Analysis</h3>
+                    <div class="number">02</div>
+                    <div class="explore-button">
+                        <span>explore</span>
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="arrow-icon"></div>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-tag">Advantages</div>
+                    <h3>Expert<br>Diagnosis</h3>
+                    <div class="number">03</div>
+                    <div class="explore-button">
+                        <span>explore</span>
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="arrow-icon"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="technology snap-section" id="technology">
+            <div class="tech-content">
+                <div class="tech-header">
+                    <div class="sliding-container">
+                        <div class="sliding-text">
+                            <span class="text-group">
+                                <span class="text-black">POWERING YOUR HEALTH</span>
+                                <span class="text-separator">/</span>
+                                <span class="text-purple">SAFEGUARDING YOUR EYE</span>
+                            </span>
+                            <span class="text-group">
+                                <span class="text-black">POWERING YOUR HEALTH</span>
+                                <span class="text-separator">/</span>
+                                <span class="text-purple">SAFEGUARDING YOUR EYE</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-section" style="margin-top: -8rem; position: relative; z-index: 3;">
+                    <div class="section-title"><span>Have a </span><span class="highlight">Question?</span></div>
+                    <p class="section-description">Our AI-powered chatbot is here to help you 24/7. Get instant answers to your medical queries and guidance on our services.</p>
+                </div>
+                <div class="model-container" style="height: 90vh; max-width: 1400px; overflow: visible; pointer-events: none;">
+                    <iframe src='https://my.spline.design/droid-c1ad8993f6e3200c86ed8fcf2ffebc60/' frameborder='0' width='160%' height='160%' style="transform: scale(1.2) translateY(-5%); z-index: 1; pointer-events: auto;"></iframe>
+                </div>
+                <div class="chat-trigger">
+                    <button class="chat-button" onclick="toggleChat()">
+                        <span class="chat-button-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <span class="chat-button-text">Chat with AI</span>
+                    </button>
+                </div>
+
+                <!-- Modern Chatbot UI -->
+                <div class="chatbot-container" id="chatbot">
+                    <div class="chatbot-header">
+                        <div class="chatbot-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="chatbot-info">
+                            <h3>EyeAI Assistant</h3>
+                            <p>Online • AI powered medical assistant</p>
+                        </div>
+                        <button class="close-chat" onclick="toggleChat()">×</button>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be added dynamically by JS -->
+                    </div>
+                    <div class="chat-input-container">
+                        <div class="input-features">
+                            <label for="eyeImageUpload" class="feature-button" title="Upload Eye Image">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8ZM12 6C8.688 6 6 8.688 6 12C6 15.312 8.688 18 12 18C15.312 18 18 15.312 18 12C18 8.688 15.312 6 12 6ZM12 2C7.032 2 2.9 5.134 1.18 9.6C1.06 9.894 1 10.2 1 10.5C1 10.8 1.06 11.106 1.18 11.4C2.9 15.866 7.032 19 12 19C16.968 19 21.1 15.866 22.82 11.4C22.94 11.106 23 10.8 23 10.5C23 10.2 22.94 9.894 22.82 9.6C21.1 5.134 16.968 2 12 2Z" fill="currentColor"/>
+                                </svg>
+                                <input type="file" id="eyeImageUpload" accept="image/*" style="display: none;" onchange="handleEyeImageUpload(event)">
+                            </label>
+                        </div>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="chatInput" 
+                                placeholder="Type your message..." 
+                                rows="1"
+                                onkeydown="handleKeyPress(event)"></textarea>
+                            <button class="send-button" onclick="sendMessage()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Eye Analysis Modal -->
+                    <div id="eyeAnalysisModal" class="eye-analysis-modal">
+                        <div class="eye-analysis-content">
+                            <div class="eye-analysis-header">
+                                <h3>Eye Analysis</h3>
+                                <button class="close-modal" onclick="closeEyeAnalysisModal()">×</button>
+                            </div>
+                            <div class="eye-analysis-body">
+                                <div class="eye-image-preview-container">
+                                    <img id="eyeImagePreview" src="#" alt="Eye image preview">
+                                </div>
+                                <div class="eye-analysis-status">
+                                    <div class="analysis-spinner">
+                                        <div class="spinner"></div>
+                                    </div>
+                                    <p id="analysisStatusText">Analyzing your eye image...</p>
+                                </div>
+                                <div class="eye-analysis-result" id="eyeAnalysisResult">
+                                    <!-- Results will be populated here -->
+                                </div>
+                            </div>
+                            <div class="eye-analysis-footer">
+                                <button class="secondary-button" onclick="closeEyeAnalysisModal()">Close</button>
+                                <button class="download-report-button" id="downloadReportBtn" style="display:none;" onclick="generateEyeReport()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/>
+                                    </svg>
+                                    Download Report
+                                </button>
+                                <button class="primary-button" onclick="completeEyeAnalysis()">Get Treatment Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us snap-section" id="why-choose-us">
+            <div class="globe-container">
+                <canvas id="globe-visualization"></canvas>
+                <div class="globe-gradient"></div>
+            </div>
+            
+            <div class="choose-us-content">
+                <h2 class="section-title">Why Choose Us?</h2>
+                <p class="section-subtitle">Empowering Eye Care Worldwide</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Expert Medical & Research Team</h3>
+                        <p>Our specialists are pioneers in their fields, driving medical advancements worldwide.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Data-Driven Precision Medicine</h3>
+                        <p>AI-driven diagnostics ensure better accuracy, faster results, and personalized treatment plans.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Global Reach & Impact</h3>
+                        <p>Our technology is improving lives in over 30+ countries, setting new standards in healthcare.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Globe Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three-globe@2.24.13/dist/three-globe.min.js"></script>
+    
+    <!-- PDF Generation & Visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='animation-fix.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+
+    <script>
+        // Reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-text, .reveal-card, .reveal-slide').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+
+    <script>
+        // Smooth section scrolling
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.snap-section');
+            let currentSection = 0;
+            let isScrolling = false;
+
+            function scrollToSection(index) {
+                if (index >= 0 && index < sections.length) {
+                    sections[index].scrollIntoView({ behavior: 'smooth' });
+                    currentSection = index;
+                }
+            }
+
+            window.addEventListener('wheel', (e) => {
+                if (isScrolling) return;
+                
+                isScrolling = true;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000); // Debounce scroll events
+
+                if (e.deltaY > 0) {
+                    // Scroll down
+                    scrollToSection(currentSection + 1);
+                } else {
+                    // Scroll up
+                    scrollToSection(currentSection - 1);
+                }
+            });
+
+            // Handle touch events for mobile
+            let touchStart = 0;
+            let touchEnd = 0;
+
+            window.addEventListener('touchstart', (e) => {
+                touchStart = e.changedTouches[0].screenY;
+            });
+
+            window.addEventListener('touchend', (e) => {
+                if (isScrolling) return;
+
+                touchEnd = e.changedTouches[0].screenY;
+                const difference = touchStart - touchEnd;
+
+                isScrolling = true;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+
+                if (difference > 50) {
+                    // Scroll down
+                    scrollToSection(currentSection + 1);
+                } else if (difference < -50) {
+                    // Scroll up
+                    scrollToSection(currentSection - 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

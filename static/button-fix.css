@@ -1,0 +1,61 @@
+/* 
+ * button-fix.css
+ * This file contains fixes and styling enhancements for buttons in the EyeAI UI
+ */
+
+/* Ensure all buttons have proper hover states */
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+/* Fix for the download report button visibility */
+.download-report-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.download-report-button:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.download-report-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Fix for modal buttons alignment */
+.eye-analysis-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 15px;
+}
+
+/* Ensure buttons are properly sized on mobile */
+@media (max-width: 768px) {
+    .eye-analysis-footer {
+        flex-direction: column;
+    }
+    
+    .eye-analysis-footer button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .download-report-button {
+        order: 2;
+    }
+}

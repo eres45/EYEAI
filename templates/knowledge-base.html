@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base - Eye Flu Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='knowledge-base.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <nav class="navbar">
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <i class="fas fa-eye"></i>
+                <span>EyeHealth AI</span>
+            </a>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('analysis') }}" class="nav-link">Analysis</a>
+                <a href="{{ url_for('knowledge_base') }}" class="nav-link active">Knowledge Base</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="knowledge-base">
+        <div class="container">
+            <section class="hero-section">
+                <h1>Eye Flu Information Hub</h1>
+                <p>Comprehensive resources about eye flu, its types, treatments, and prevention</p>
+            </section>
+
+            <section class="disease-comparison">
+                <h2>Eye Conditions Comparison</h2>
+                <div class="comparison-grid">
+                    <div class="grid-header">
+                        <div>Condition</div>
+                        <div>Symptoms</div>
+                        <div>Causes</div>
+                        <div>Treatment</div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="condition">Viral Conjunctivitis</div>
+                        <div class="symptoms">
+                            <ul>
+                                <li>Watery discharge</li>
+                                <li>Pink or red eyes</li>
+                                <li>Burning sensation</li>
+                            </ul>
+                        </div>
+                        <div class="causes">
+                            <ul>
+                                <li>Adenovirus</li>
+                                <li>Common cold</li>
+                                <li>Upper respiratory infection</li>
+                            </ul>
+                        </div>
+                        <div class="treatment">
+                            <ul>
+                                <li>Self-limiting</li>
+                                <li>Artificial tears</li>
+                                <li>Cold compresses</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="condition">Bacterial Conjunctivitis</div>
+                        <div class="symptoms">
+                            <ul>
+                                <li>Thick yellow/green discharge</li>
+                                <li>Crusting of eyelids</li>
+                                <li>Eye redness</li>
+                            </ul>
+                        </div>
+                        <div class="causes">
+                            <ul>
+                                <li>Staphylococcus</li>
+                                <li>Streptococcus</li>
+                                <li>Haemophilus</li>
+                            </ul>
+                        </div>
+                        <div class="treatment">
+                            <ul>
+                                <li>Antibiotic eye drops</li>
+                                <li>Eye ointments</li>
+                                <li>Medical consultation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="condition">Allergic Conjunctivitis</div>
+                        <div class="symptoms">
+                            <ul>
+                                <li>Itching</li>
+                                <li>Redness</li>
+                                <li>Watery eyes</li>
+                            </ul>
+                        </div>
+                        <div class="causes">
+                            <ul>
+                                <li>Pollen</li>
+                                <li>Dust mites</li>
+                                <li>Pet dander</li>
+                            </ul>
+                        </div>
+                        <div class="treatment">
+                            <ul>
+                                <li>Antihistamine drops</li>
+                                <li>Allergen avoidance</li>
+                                <li>Cool compresses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prevention-guide">
+                <h2>Prevention Guidelines</h2>
+                <div class="prevention-cards">
+                    <div class="prevention-card">
+                        <i class="fas fa-hands-wash"></i>
+                        <h3>Hand Hygiene</h3>
+                        <p>Wash hands frequently with soap and water for at least 20 seconds</p>
+                    </div>
+                    <div class="prevention-card">
+                        <i class="fas fa-eye-slash"></i>
+                        <h3>Avoid Touching</h3>
+                        <p>Don't touch or rub your eyes with unwashed hands</p>
+                    </div>
+                    <div class="prevention-card">
+                        <i class="fas fa-box-tissue"></i>
+                        <h3>Clean Environment</h3>
+                        <p>Maintain clean surroundings and avoid sharing personal items</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How accurate is the AI diagnosis?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our AI system has been trained on a vast dataset of eye conditions and achieves an accuracy rate of over 90%. However, it's important to note that this tool is meant for preliminary screening and should not replace professional medical advice.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How is my data protected?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We implement state-of-the-art encryption and security measures to protect your data. All images are processed securely and are not stored permanently. We comply with GDPR and HIPAA regulations to ensure your privacy.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What should I do after receiving a diagnosis?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If the system detects any eye condition, we recommend consulting with an eye care professional. The AI diagnosis serves as a preliminary assessment and should be confirmed by a medical expert.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="mailto:support@eyehealthai.com"><i class="fas fa-envelope"></i> support@eyehealthai.com</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">HIPAA Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Partner Clinics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2024 Eye Flu Classification System. All rights reserved.</p>
+                <p class="disclaimer">Medical Disclaimer: This tool is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='knowledge-base.js') }}"></script>
+</body>
+</html>
