@@ -34,11 +34,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT not set
-    app.run(host="0.0.0.0", port=port, debug=False)
-
 # Import and register the eye scan blueprint
 from eye_scan_routes import eye_scan
 app.register_blueprint(eye_scan)
@@ -1697,3 +1692,12 @@ if __name__ == '__main__':
         print("Models will be loaded on first request")
     
     app.run(debug=True, port=5700)
+
+# Set memory growth for TensorFlow to avoid excessive RAM usage
+gpus = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpus:
+    tf.config.experimental.set_memory_growth(gpu, True)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT not set
+    app.run(host="0.0.0.0", port=port, debug=False)
